@@ -1,0 +1,16 @@
+services:
+  sqlite-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sqlite-agent-app
+    ports:
+      - 8501:8501
+    env_file:
+      - .env
+    environment:
+      - PYTHONUNBUFFERED=1
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    restart: unless-stopped
